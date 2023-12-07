@@ -2,11 +2,12 @@ package com.example.demo.db;
 
 import com.example.demo.model.Author;
 import com.example.demo.model.Book;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 public class BookDAO {
     public List<Book> getAlBook() {
         List<Book> bookList = new ArrayList<>();

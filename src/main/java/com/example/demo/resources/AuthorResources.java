@@ -2,6 +2,7 @@ package com.example.demo.resources;
 
 import com.example.demo.db.AuthorDAO;
 import com.example.demo.model.Author;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,12 @@ import java.util.List;
 @RequestMapping("/authors")
 @Validated
 public class AuthorResources {
-    AuthorDAO authorDAO = new AuthorDAO();
+//    AuthorDAO authorDAO = new AuthorDAO();
+   private AuthorDAO authorDAO;
+   @Autowired
+    public AuthorResources(AuthorDAO authorDAO) {
+        this.authorDAO = authorDAO;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Author> getAuthors(){

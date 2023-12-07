@@ -2,6 +2,7 @@ package com.example.demo.resources;
 
 import com.example.demo.db.BookDAO;
 import com.example.demo.model.Book;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,14 @@ import java.util.List;
 @RequestMapping("/books")
 @Validated
 public class BookResource {
-    BookDAO bookDAO = new BookDAO();
+//    BookDAO bookDAO = new BookDAO();
+
+      private BookDAO bookDAO;
+
+    @Autowired
+    public BookResource(BookDAO bookDAO) {
+        this.bookDAO = bookDAO;
+    }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Book> getBooks() {
