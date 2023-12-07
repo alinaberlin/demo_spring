@@ -31,13 +31,13 @@ public class AuthorResources {
         return authorDAO.getAuthor(id);
     }
 
-    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
     public Author updateAuthor(@PathVariable("id") int id, Author author) {
         authorDAO.updateAuthor(id, author);
         return author;
     }
 
-    @GetMapping( consumes=MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping( consumes=MediaType.APPLICATION_JSON_VALUE)
     public void addAuthor( Author author) {
         authorDAO.addAuthor(author);
     }
