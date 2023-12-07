@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 @Component
-public class BookDAO {
+public class BookDAO extends SupremeDAO{
     public List<Book> getAlBook() {
         List<Book> bookList = new ArrayList<>();
         try (Connection connection = DBCconnection.getConnection()) {

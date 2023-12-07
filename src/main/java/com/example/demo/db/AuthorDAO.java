@@ -9,8 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 @Component
-public class AuthorDAO {
-    private boolean isConnected;
+public class AuthorDAO  extends SupremeDAO{
     public List<Author> getAlAuthors() {
         List<Author> authorlist = new ArrayList<>();
         try (Connection connection = DBCconnection.getConnection()) {
@@ -69,22 +68,5 @@ public class AuthorDAO {
         }
 
     }
-
-    @PostConstruct
-    public void initializeConnection() {
-        System.out.println("initializeConnection called from ResourceConnectionManager");
-
-        isConnected = false;
-
-    }
-    @PreDestroy
-    public void destroy(){
-        System.out.println("DAO is distroyed");
-        if (isConnected) {
-            isConnected = false;
-            System.out.println("Connection closed.");
-        }
-    }
-
 
 }

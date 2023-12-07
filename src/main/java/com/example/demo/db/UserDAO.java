@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 @Component
-public class UserDAO {
+public class UserDAO extends SupremeDAO {
     public void addUser(User user) {
         try (Connection connection = DBCconnection.getConnection()) {
             PreparedStatement stm = connection.prepareStatement("INSERT INTO users(username, password, role ) VALUES(?, ?, ?) ");
