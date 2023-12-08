@@ -3,11 +3,12 @@ package com.example.demo.db;
 import com.example.demo.model.Author;
 import com.example.demo.model.Book;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-@Component
+@Repository
 public class BookDAO extends SupremeDAO{
     public List<Book> getAlBook() {
         List<Book> bookList = new ArrayList<>();

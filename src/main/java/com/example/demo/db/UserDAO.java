@@ -4,12 +4,13 @@ import com.example.demo.model.Author;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-@Component
+@Repository
 public class UserDAO extends SupremeDAO {
     public void addUser(User user) {
         try (Connection connection = DBCconnection.getConnection()) {

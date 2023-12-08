@@ -4,17 +4,18 @@ import com.example.demo.model.Author;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-@Component
+@Repository
 public class AuthorDAO  extends SupremeDAO{
     public List<Author> getAlAuthors() {
         List<Author> authorlist = new ArrayList<>();
         try (Connection connection = DBCconnection.getConnection()) {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM books");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM authors");
             while (rs.next()) {
                 Author author = new Author(rs.getInt("id"),rs.getString("name"));
                 authorlist.add(author);
